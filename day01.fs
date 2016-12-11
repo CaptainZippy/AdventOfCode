@@ -27,12 +27,13 @@ module Day01 =
 module Day02 =
     let pad1 pos dir =
         match dir with
-            | 'U' -> if pos-3 < 1 then pos else pos-3
-            | 'D' -> if pos+3 > 9 then pos else pos+3
-            | 'L' -> if pos%3 = 1 then pos else pos-1
-            | 'R' -> if pos%3 = 0 then pos else pos+1
+        | 'U' -> if pos-3 < 1 then pos else pos-3
+        | 'D' -> if pos+3 > 9 then pos else pos+3
+        | 'L' -> if pos%3 = 1 then pos else pos-1
+        | 'R' -> if pos%3 = 0 then pos else pos+1
     let pad2 pos dir =
-        let p = match dir with
+        let p =
+            match dir with
             | 'U' -> if pos-5 < 1 then pos else pos-5
             | 'D' -> if pos+5 > 25 then pos else pos+5
             | 'L' -> if pos%5 = 1 then pos else pos-1
@@ -58,13 +59,32 @@ module Day03 =
     let triple (line:string) =
         let t = Array.filter (Seq.isEmpty >> not) (line.Split ' ')
         Array.map System.Int32.Parse t
+    let check (triples:int[][]) =
+        let ok (y:int[]) =
+            let x = Array.sort y
+            x.[0]+x.[1] > x.[2]
+        Array.filter ok triples
+    let transpose (triples:int[][]) =
+        let func i =
+            let c = i%3
+            let r = i-c
+            [|triples.[r].[c]; triples.[r+1].[c]; triples.[r+2].[c] |]
+        Array.init triples.Length func
     let run() =
         let lines = System.IO.File.ReadAllLines("day03.txt")
-        let triples = Array.map triple lines
-        printfn "Part1 %A" triples
+        let htriples = Array.map triple lines
+        printfn "Part1 %A" (Array.length (check htriples))
+        let vtriples = transpose htriples
+        printfn "Part2 %A" (Array.length (check vtriples))
+
+module Day04 =
+    let run() =
+        0
+
 [<EntryPoint>]
 let main argv =
     //Day01.run()
     //Day02.run()
-    Day03.run()
+    //Day03.run()
+    Day04.run()
     0
