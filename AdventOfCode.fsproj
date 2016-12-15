@@ -26,6 +26,7 @@
     <DocumentationFile>bin\Debug\AdventOfCode.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
     <StartWorkingDirectory>D:\sk\AdventOfCode\</StartWorkingDirectory>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,11 +57,17 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="day01.fs" />
     <None Include="App.config" />
     <Content Include="day01.txt" />
     <Content Include="day02.txt" />
     <Content Include="day03.txt" />
+    <Content Include="day04.txt" />
+    <Compile Include="Day01.fs" />
+    <Compile Include="Day02.fs" />
+    <Compile Include="Day03.fs" />
+    <Compile Include="Day04.fs" />
+    <Compile Include="Day05.fs" />
+    <Compile Include="Advent.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
