@@ -1,4 +1,4 @@
 
 .PHONY=run
 run:
-	nim c --run p03b.nim
+	nim c --run p01b.nim
