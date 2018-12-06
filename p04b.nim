@@ -42,5 +42,10 @@ proc main() =
         minute = foldl(hists, if a[1]>b[1]: a else: b)
     echo best[1].hist
     echo "Guard ", best[0], " for ", best[1].count, " minutes ", minute, " ", best[0] * minute[0]
+    for k,v in times.pairs():
+        let
+            hists = zip( toseq(countup[int](0,59)), v.hist )
+            minute = foldl(hists, if a[1]>b[1]: a else: b)
+        echo k,minute
 
 main()
