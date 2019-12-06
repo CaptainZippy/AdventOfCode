@@ -1,0 +1,51 @@
+https://nim-lang.org/docs/tut1.html
+
+# line comment
+#[ block comment ]#
+1_000_000
+var x = "foo"
+const y = "bar" #compile time
+let y = "quux" #assign-once
+cast x of ...
+discard = nop
+for i in countup(a,b): countdown(10,1):
+for i in 1..10   for i in 0 ..< s.len:
+for index, item in [...].pairs: (items, mitems, pairs, mpairs)
+block foo:
+    var x = "hi"
+    while true: break foo
+when - compile time #if
+const fac4 = (var x = 1; for i in 1..4: x *= i; x) # statements in expr
+result variable - implicitly returned
+arguments immutable
+shadowing argument is an idiom
+var parameter for pass by ref
+proc `operator` ...
+declaration proc even(n: int): bool (no=)
+type
+  Direction = enum
+    north, east, south, west
+type
+  CharSet = set[char]
+type
+  IntArray = array[0..5, int] # an array that is indexed with 0..5
+$ = stringizing
+@ = seqizing. x = @[1,3,4]
+proc openArraySize(oa: openArray[string]): int = 
+  oa.len, oa.high, oa.low
+proc myWriteln(f: File, a: varargs[string]) =
+type
+  Person = object
+    name: string
+    age: int
+type
+  Person* = object # the type is visible from other modules
+type
+  PersonX = tuple[name: string, age: int] # structurally typed
+(dir, name, ext) = splitFile(path) # tuple unpack in assignment
+type
+  Node = ref object
+    le, ri: Node
+    data: int
+import # usual
+include # macro inclusion
